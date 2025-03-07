@@ -122,6 +122,6 @@ I promise I won’t bite (unless your bug report is just "it's broken" with no d
 - Vite
 - React
 - TypeScript
-- .NET 8
+- .NET 9
 - ASP.NET Core
 - EF Core

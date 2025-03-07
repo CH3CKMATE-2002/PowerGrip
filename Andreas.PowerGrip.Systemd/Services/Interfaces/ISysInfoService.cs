@@ -1,5 +1,3 @@
-using Andreas.PowerGrip.Shared.Types;
-
 namespace Andreas.PowerGrip.Systemd.Services.Interfaces;
 
 public interface ISysInfoService

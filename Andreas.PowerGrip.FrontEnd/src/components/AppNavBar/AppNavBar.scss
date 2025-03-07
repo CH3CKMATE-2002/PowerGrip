@@ -1,0 +1,7 @@
+/// Visible drawer borders radius.
+$radius: 20px;
+
+.app-drawer {
+    // Clockwise from top-left border
+    border-radius: 0px $radius $radius 0px;
+}

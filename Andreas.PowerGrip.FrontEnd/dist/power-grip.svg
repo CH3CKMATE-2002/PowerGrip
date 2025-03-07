@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="140.313" y1="118.665" x2="140.313" y2="149.958" id="gradient-0" gradientTransform="matrix(0.968772, 0.621909, -0.312389, 0.305539, 52.412877, 8.797569)">
+      <stop offset="0" style="stop-color: rgb(128, 0, 255);"/>
+      <stop offset="1" style="stop-color: rgb(0, 5, 97);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="282.504" y1="310.594" x2="282.504" y2="420.546" id="gradient-1" gradientTransform="matrix(0.579525, 0.814955, -0.656934, 0.467153, 340.481953, -67.939478)">
+      <stop offset="0" style="stop-color: rgb(128, 0, 255);"/>
+      <stop offset="1" style="stop-color: rgb(0, 5, 97);"/>
+    </linearGradient>
+  </defs>
+  <path d="M 139.62 150.46 L 139.62 130.417 L 147.181 130.417 Q 149.177 130.417 150.23 130.608 Q 151.706 130.855 152.704 131.545 Q 153.702 132.235 154.311 133.48 Q 154.919 134.724 154.919 136.214 Q 154.919 138.771 153.292 140.541 Q 151.665 142.312 147.413 142.312 L 142.272 142.312 L 142.272 150.46 Z M 142.272 139.946 L 147.454 139.946 Q 150.024 139.946 151.105 138.989 Q 152.185 138.032 152.185 136.296 Q 152.185 135.038 151.549 134.143 Q 150.913 133.247 149.874 132.96 Q 149.204 132.782 147.399 132.782 L 142.272 132.782 Z" transform="matrix(16.44315, 0.21697, -4.343609, 14.48966, -1542.170776, -1831.106201)" style="fill: url('#gradient-0'); stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.680634px;"/>
+  <path style="stroke: rgb(0, 0, 0); fill: url('#gradient-1'); stroke-linejoin: round; stroke-linecap: round; stroke-width: 4px;" d="M 203.049 280.097 L 269.663 302.569 L 297.752 271.269 L 296.148 311.398 L 329.053 321.831 L 296.148 340.29 L 298.556 381.221 L 273.676 349.118 L 199.037 381.22 C 202.658 378.323 249.234 321.962 242.375 327.449 L 203.049 280.097 Z"/>
+  <polygon style="stroke: rgb(0, 0, 0); fill: rgb(0, 5, 97); stroke-linejoin: round; stroke-linecap: round; stroke-width: 4px;" points="29.695 86.676 171.749 86.676 154.895 126.805"/>
+  <polygon style="stroke: rgb(0, 0, 0); fill: rgb(0, 5, 97); stroke-width: 4px; stroke-linejoin: round; stroke-linecap: round;" points="40.53 137.238 155.297 137.238 141.681 171.749"/>
+  <polygon style="stroke: rgb(0, 0, 0); fill: rgb(0, 5, 97); stroke-width: 4px; stroke-linecap: round; stroke-linejoin: round;" points="62.199 182.184 139.245 182.184 130.104 207.866"/>
+</svg>

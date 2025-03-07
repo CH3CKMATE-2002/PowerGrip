@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- Other things to brag about -->
+    <Authors>CH3CKMATE-2002 &lt;andrehhanna2900@gmail.com&gt;</Authors>
+    <Version>0.0.1</Version>
+
+    <Title>PowerGrip</Title>
+    <Description>PowerGrip's Privileged Daemon</Description>
+
+    <AssemblyName>power-grip-systemd</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Systemd" Version="9.0.2" />
+    <PackageReference Include="Serilog" Version="4.2.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.3.1" />
+  </ItemGroup>
+
+  <!-- My resources & other things -->
+  <ItemGroup>
+    <EmbeddedResource Include="./Resources/*">
+      <LogicalName>%(FileName)%(Extension)</LogicalName>
+    </EmbeddedResource>
+    
+    <!-- <None Include="./Resources/" /> -->
+
+    <None Update="./Setup/*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </None>
+
+    <ProjectReference Include="../Andreas.PowerGrip.Shared/Andreas.PowerGrip.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

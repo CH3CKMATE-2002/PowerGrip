@@ -1,0 +1,21 @@
+# My Project TODO-List:
+
+- [X] Design PowerGrip main logo.
+  - [ ] Make the logo more beautiful?
+- [ ] Design the basic API functionality.
+  - [X] Use UDS.
+  - [X] Secure endpoints (JWT).
+  - [X] Use systemd service model and test it.
+  - [ ] Remove the dependency on the old `SystemService`.
+  - [ ] Make `SystemInfo` class.
+- [ ] Design the basic frontend functionality.
+- [ ] Complete API design.
+  - [X] Make a UserManager.
+    - [X] Create `CheckPassword`
+    - [X] Store Refresh Tokens.
+    - [x] Make user manager return `ServiceResponse`
+    - [x] Validation `:')`
+  - [x] Remove `HashSet<string>` from `AppUser`.
+- [ ] Complete Frontend design.
+  - [ ] Finish the login screen.
+  - [ ] Make the main menu.

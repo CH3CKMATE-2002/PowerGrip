@@ -1,0 +1,22 @@
+[Unit]
+Description=PowerGrip privileged daemon
+After=network.target
+
+[Service]
+Type=notify
+ExecStart=/home/andreas/Tools/dotnet/dotnet /home/andreas/Projects/Andreas.PowerGrip/Andreas.PowerGrip.Systemd/bin/Debug/net9.0/power-grip-systemd.dll
+User=root
+Group=powergrip
+Restart=always
+Environment=ASPNETCORE_ENVIRONMENT=Production
+ProtectSystem=full
+#ProtectHome=true
+PrivateTmp=true
+#DynamicUser=true
+NoNewPrivileges=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictRealtime=true
+# TODO: Further hardening here?
+
+[Install]
+WantedBy=multi-user.target

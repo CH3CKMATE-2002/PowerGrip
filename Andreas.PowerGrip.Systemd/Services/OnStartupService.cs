@@ -39,6 +39,13 @@ public class OnStartupService(
 
     public Task StopAsync(CancellationToken cancellationToken)
     {
+        var socketPath = _udsSocketOptions.Path;
+
+        if (File.Exists(socketPath))
+        {
+            File.Delete(socketPath);
+        }
+        
         return Task.CompletedTask;
     }
 }

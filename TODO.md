@@ -7,7 +7,7 @@
   - [X] Secure endpoints (JWT).
   - [X] Use systemd service model and test it.
   - [ ] Remove the dependency on the old `SystemService`.
-  - [ ] Make `SystemInfo` class.
+  - [X] Make `SystemInfo` class.
 - [ ] Design the basic frontend functionality.
 - [ ] Complete API design.
   - [X] Make a UserManager.

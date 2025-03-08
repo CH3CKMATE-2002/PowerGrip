@@ -31,6 +31,12 @@ public sealed class UdsHttpClient: IDisposable
         _client = new HttpClient(handler);
     }
 
+    /// <summary>
+    /// Uses GET HTTP method to get a resources given a path
+    /// </summary>
+    /// <typeparam name="T">The type of the returned resource (will be parsed as JSON)</typeparam>
+    /// <param name="path">The path to the resource that starts with <c>'/'</c></param>
+    /// <returns>The <see cref="Task{T}"/> that has <see cref="T"/> as its data</returns>
     public async Task<T?> GetAsync<T>(string path)
     {
         using var response = await _client.GetAsync($"http://localhost{path}");

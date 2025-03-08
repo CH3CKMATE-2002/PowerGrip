@@ -19,8 +19,10 @@ public class DebugController : ControllerBase
         }
         catch (Exception ex)
         {
+            int err = Marshal.GetLastWin32Error();
+
             return BadRequest(ServiceResponse<string>.ErrorResponse(
-                title: "Checking Failed",
+                title: $"Checking Failed (code: {err})",
                 error: ServiceError.InternalServerError(ex.Message)
             ));
         }

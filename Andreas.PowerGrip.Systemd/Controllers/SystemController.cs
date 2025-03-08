@@ -3,26 +3,54 @@ namespace Andreas.PowerGrip.Systemd.Controllers;
 [ApiController, Route("[controller]")]
 public class SystemController: ControllerBase
 {
-    [HttpGet, Route("i-am-root")]
-    public ActionResult<ServiceResponse<string>> IsRoot()
+    [HttpGet, Route("apt-update")]
+    public async Task<ActionResult<ServiceResponse<ProcessData>>> AptUpdate()
     {
-        try
+        var psi = new ProcessStartInfo
         {
-            var isRoot = UnixUtils.IsRoot();
-            var username = UnixUtils.GetUsername();
+            FileName = "apt",
+            Arguments = "update",
+            RedirectStandardInput = true,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true
+        };
 
-            return Ok(new ServiceResponse<string>
+        var stopwatch = Stopwatch.StartNew();
+        using var process = Process.Start(psi);
+
+        if (process is null)
+        {
+            stopwatch.Stop();
+            return BadRequest(new ServiceResponse<ProcessData>
             {
-                Success = isRoot,
-                Data = $"I am {username}"
+                Success = false,
+                Title = "Failure at Launching Process",
+                Data = ProcessData.FailedToLaunch(),
+                Errors =
+                [
+                    ServiceError.InternalServerError("The 'apt' process could not be launched")
+                ]
             });
         }
-        catch (Exception ex)
+
+        await process.WaitForExitAsync();
+        stopwatch.Stop();
+
+        return new ServiceResponse<ProcessData>
         {
-            return BadRequest(ServiceResponse<string>.ErrorResponse(
-                title: "Checking Failed",
-                error: ServiceError.InternalServerError(ex.Message)
-            ));
-        }
+            Success = true,
+            Title = "Process Completed",
+            Data = new ProcessData
+            {
+                Tag = "apt update",
+                LaunchSuccess = true,
+                ExitCode = process.ExitCode,
+                RunningTime = stopwatch.Elapsed,
+                StdError = await process.StandardError.ReadToEndAsync(),
+                StdOutput = await process.StandardOutput.ReadToEndAsync(),
+            },
+        };
     }
 }

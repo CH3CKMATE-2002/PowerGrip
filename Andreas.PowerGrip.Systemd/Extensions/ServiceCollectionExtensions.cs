@@ -4,8 +4,8 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddDaemonConfigurations(this IServiceCollection services, IConfiguration config)
     {
-        var udsSettings = config.GetSection(nameof(UdsSocketOptions)).Get<UdsSocketOptions>();
-        services.AddSingleton(udsSettings ?? new UdsSocketOptions());
+        var udsSettings = config.GetSection(nameof(UdsOptions)).Get<UdsOptions>();
+        services.AddSingleton(udsSettings ?? new UdsOptions());
 
         return services;
     }

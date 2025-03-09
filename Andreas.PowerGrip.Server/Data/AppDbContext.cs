@@ -41,4 +41,8 @@ public class AppDbContext(
     public DbSet<AppUser> Users => Set<AppUser>();
 
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
+
+    public DbSet<HandshakeRecord> Handshakes => Set<HandshakeRecord>();
+
+    public DbSet<StoredKey> StoredKeys => Set<StoredKey>();
 }

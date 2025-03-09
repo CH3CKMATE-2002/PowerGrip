@@ -135,4 +135,19 @@ public enum ErrorKind : byte
     /// Represents an error when the user tries to login using an un-configured or unsupported type. 
     /// </summary>
     InvalidLoginMethod,
+
+    /// <summary>
+    /// Represents a forced error to prevent spams.
+    /// </summary>
+    SpamPrevention,
+
+    /// <summary>
+    /// Represents a forced error to prevent brute-force login attempts.
+    /// </summary>
+    TooManyLoginAttempts,
+
+    /// <summary>
+    /// Represents an error when a service forbids an action.
+    /// </summary>
+    ForbiddenError,
 }

@@ -17,6 +17,9 @@ foreach (var (key, value) in envVars)
 // Add services to the container.
 builder.Services.AddControllers();
 
+// Add custom conventions.
+builder.ConfigureConventions();
+
 // Add storage services (databases)
 builder.Services.AddStorage(config);
 
@@ -42,6 +45,7 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 var isDevEnvironment = app.Environment.IsDevelopment();
+
 if (isDevEnvironment)
 {
     app.UseSwagger();
@@ -60,6 +64,8 @@ app.UseSpaStaticFiles();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UsePowerGripMiddlewares();
 
 app.MapControllers();
 

@@ -13,9 +13,18 @@
   - [X] Make a UserManager.
     - [X] Create `CheckPassword`
     - [X] Store Refresh Tokens.
-    - [x] Make user manager return `ServiceResponse`
-    - [x] Validation `:')`
-  - [x] Remove `HashSet<string>` from `AppUser`.
+    - [X] Make user manager return `ServiceResponse`
+    - [X] Validation `:')`
+  - [X] Implement the RSA Handshake.
+  - [ ] Implement `SignUpRequest` (user creation from non-admins)
+  - [ ] Implement optional IP Banning.
+  - [X] Remove `HashSet<string>` from `AppUser`.
+  - [ ] Reduce code duplication by using: `Task::GetAwaiter::GetResult` (How did I completely forget about this!? 🤦🏻)
+  - [ ] Implement SMTP mailing and notifications.
 - [ ] Complete Frontend design.
   - [ ] Finish the login screen.
   - [ ] Make the main menu.
+  - [ ] Find a charting library.
+  - [ ] Make widgets for system infos.
+  - [ ] Make a terminal emulator widget (or use library).
+  - [ ] Make a file-manager widget.

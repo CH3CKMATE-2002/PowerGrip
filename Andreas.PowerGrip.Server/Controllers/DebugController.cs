@@ -1,14 +1,17 @@
 namespace Andreas.PowerGrip.Server.Controllers;
 
+[ExcludeFromProduction]
 [ApiController, Route("api/[controller]")]
 public class DebugController(
     ILogger<DebugController> logger,
     ISystemService system,
-    IJwtProvider jwtProvider) : ControllerBase
+    IJwtProvider jwtProvider,
+    UdsHttpClient client) : ControllerBase
 {
     private readonly IJwtProvider _jwtProvider = jwtProvider;
     private readonly ISystemService _system = system;
     private readonly ILogger<DebugController> _logger = logger;
+    private readonly UdsHttpClient _client = client;
 
     [HttpGet, Route("hello")]
     public ActionResult<ServiceResponse> Hello()
@@ -120,9 +123,7 @@ public class DebugController(
     [HttpGet, Route("test-privileged")]
     public async Task<ActionResult<ServiceResponse<string>>> SystemdServiceTest()
     {
-        using var client = new UdsHttpClient("/var/run/powergrip.sock");
-
-        var response = await client.GetAsync<ServiceResponse<string>>(SystemdEndpoints.AmIRoot);
+        var response = await _client.GetAsync<ServiceResponse<string>>(SystemdEndpoints.AmIRoot);
 
         if (response is null)
         {

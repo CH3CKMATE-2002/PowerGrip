@@ -30,10 +30,11 @@ public static class AesUtils
         aes.Key = Convert.FromBase64String(key);
         aes.IV = Convert.FromBase64String(iv);
 
+        var encryptedBytes = Convert.FromBase64String(encryptedData);
+
         using var decryptor = aes.CreateDecryptor();
         byte[] decryptedBytes = decryptor.TransformFinalBlock(
-            Convert.FromBase64String(encryptedData), 0, Convert.FromBase64String(encryptedData).Length
-        );
+            encryptedBytes, 0, encryptedBytes.Length);
 
         return Encoding.UTF8.GetString(decryptedBytes);
     }

@@ -1,5 +1,3 @@
-using System.Net.Http.Json;
-
 namespace Andreas.PowerGrip.Shared;
 
 public sealed class UdsHttpClient: IDisposable
@@ -8,7 +6,7 @@ public sealed class UdsHttpClient: IDisposable
 
     private readonly HttpClient _client;
 
-    public UdsHttpClient(string udsPath)
+    public UdsHttpClient(UdsOptions options)
     {
         var handler = new SocketsHttpHandler
         {
@@ -17,7 +15,7 @@ public sealed class UdsHttpClient: IDisposable
                 try
                 {
                     Socket socket = new(AddressFamily.Unix, SocketType.Stream, ProtocolType.Unspecified);
-                    UnixDomainSocketEndPoint endpoint = new(udsPath);
+                    UnixDomainSocketEndPoint endpoint = new(options.SocketFile);
                     await socket.ConnectAsync(endpoint, cancellationToken);
                     return new NetworkStream(socket, ownsSocket: true);
                 }

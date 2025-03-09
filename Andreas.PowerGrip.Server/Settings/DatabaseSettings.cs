@@ -10,7 +10,7 @@ public class DatabaseSettings
     {
         return Provider switch
         {
-            DatabaseProvider.Sqlite => !ConnectionString.IsWhiteSpace(),
+            DatabaseProvider.Sqlite => ConnectionString.StartsWith("Data Source="),
             DatabaseProvider.SqlServer => ConnectionString.StartsWith("Server="),
             _ => false,
         };

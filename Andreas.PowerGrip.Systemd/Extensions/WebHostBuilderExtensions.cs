@@ -4,10 +4,10 @@ public static class WebHostBuilderExtensions
 {
     public static IWebHostBuilder ConfigureAsSystemdService(this IWebHostBuilder webHostBuilder, IConfiguration config)
     {
-        var udsSettings = config.GetSection(nameof(UdsSocketOptions)).Get<UdsSocketOptions>();
+        var udsSettings = config.GetSection(nameof(UdsOptions)).Get<UdsOptions>();
 
-        udsSettings ??= new UdsSocketOptions();  // Use the default values.
-        var socketPath = udsSettings.Path;
+        udsSettings ??= new UdsOptions();  // Use the default values.
+        var socketPath = udsSettings.SocketFile;
 
         // Delete existing socket to avoid stale permissions
         if (File.Exists(socketPath))

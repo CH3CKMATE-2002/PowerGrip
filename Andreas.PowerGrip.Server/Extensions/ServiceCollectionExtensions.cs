@@ -20,6 +20,9 @@ public static class ServiceCollectionExtensions
         var databaseSettings = config.GetSection(nameof(DatabaseSettings)).Get<DatabaseSettings>();
         services.AddSingleton(Guard.ReturnOrThrowIfNull(databaseSettings));
 
+        var udsOptions = config.GetSection(nameof(UdsOptions)).Get<UdsOptions>();
+        services.AddSingleton(udsOptions ?? new UdsOptions());
+
         return services;
     }
 
@@ -66,7 +69,9 @@ public static class ServiceCollectionExtensions
     {
         // services.AddScoped<IThingy, Thingy>();
         services.AddSingleton<IJwtProvider, JwtProvider>();
-        services.AddSingleton<ISystemService, SystemService>();
+        services.AddSingleton<ISystemService, SystemService>();  // TODO: This implementation of ISystemService is obsolete!
+        services.AddSingleton<UdsHttpClient>();
+        services.AddScoped<IHandshakeService, HandshakeService>();
         services.AddScoped<IAppUserManager, AppUserManager>();  // Scoped, as it uses a scoped service "AppDbContext"
         return services;
     }

@@ -8,14 +8,31 @@ public static class WebAppExtensions
         {
             var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
             var settings = scope.ServiceProvider.GetRequiredService<SuperUserSettings>();
+            
             if (settings.EnsureCreation)
             {
                 SeedSuperUser(context, settings);
             }
             // NOTE: Add any seed data here.
+            DropHandshakes(context);
         }
 
         return app;
+    }
+
+    private static void DropHandshakes(AppDbContext context)
+    {
+        using var transaction = context.Database.BeginTransaction();
+        try
+        {
+            context.Handshakes.RemoveRange(context.Handshakes);
+            context.SaveChanges();
+            transaction.Commit();
+        }
+        catch
+        {
+            transaction.Rollback();
+        }
     }
 
     private static void SeedSuperUser(AppDbContext context, SuperUserSettings settings)
@@ -65,5 +82,11 @@ public static class WebAppExtensions
                 throw;
             }
         }
+    }
+
+    public static WebApplication UsePowerGripMiddlewares(this WebApplication app)
+    {
+        // app.UseMiddleware<IpBanMiddleware>();  // Went obsolete!
+        return app;
     }
 }

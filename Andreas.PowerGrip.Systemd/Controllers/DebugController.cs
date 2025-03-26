@@ -8,8 +8,9 @@ public class DebugController : ControllerBase
     {
         try
         {
-            var isRoot = UnixUtils.IsRoot();
-            var username = UnixUtils.GetUsername();
+            var root = UnixUser.GetCurrentUser(); // MUST BE ROOT!
+            var isRoot = root.IsRoot;
+            var username = root.Username;
 
             return Ok(new ServiceResponse<string>
             {

@@ -15,6 +15,4 @@ public class ModifyUserRequest
     public string Password { get; set; } = string.Empty;
 
     public DateTime? BirthDate { get; set; } = null;
-
-    public IEnumerable<string> Roles { get; set; } = [];
 }

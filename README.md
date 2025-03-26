@@ -64,7 +64,7 @@ Keep an eye on CPU, memory, disk usage, and more.
 ### System Control:
 - Manage server's file system.
 - Open a terminal session in the browser.
-- Install packages remotely.
+- (Un)Install packages remotely.
 
 ### AI Powered Tools (WIP):
 - Intrusion detection.
@@ -87,9 +87,9 @@ More features are in the pipeline! Got suggestions? Open an issue or contribute!
 For now, setting up PowerGrip is a bit hands-on. Here’s how you can run it:  
 
 ```sh
-git clone https://github.com/CH3CKMATE-2002/PowerGrip.git  
-cd PowerGrip  
-# Follow setup instructions here (coming soon!)  
+git clone https://github.com/CH3CKMATE-2002/PowerGrip.git
+cd PowerGrip
+# Follow setup instructions here (coming soon!)
 ```
 
 ## Screenshots 📸
@@ -122,6 +122,8 @@ I promise I won’t bite (unless your bug report is just "it's broken" with no d
 - Vite
 - React
 - TypeScript
-- .NET 9
+- C# .NET 9
 - ASP.NET Core
+- Serilog
 - EF Core
+- Bootstrap & React-Bootstrap

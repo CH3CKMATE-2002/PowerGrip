@@ -1,4 +1,4 @@
-import { FamousOsName } from "~/types/Os";
+import { FamousOsName } from "~/types/FamousOsName";
 import UbuntuBanner from "./UbuntuBanner";
 
 const BannerDisplay = () => {

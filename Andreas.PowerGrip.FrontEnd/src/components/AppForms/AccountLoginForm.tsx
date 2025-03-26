@@ -19,6 +19,9 @@ const AccountLoginForm = () => {
         e.preventDefault();
         logger.verbose('User is submitting form.');
         logger.data(LogLevel.VERBOSE, { username, password });
+
+        logger.debug("Navigating to Main UI");
+        navigator("/dashboard");
     };
 
     return (

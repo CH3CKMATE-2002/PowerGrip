@@ -30,3 +30,7 @@ export const randomElement = <T>(arr: Array<T>): T => {
     logger.data(LogLevel.VERBOSE, result);
     return result;
 }
+
+export const clamp = (value: number, min: number, max: number): number => {
+    return Math.max(min, Math.min(value, max));
+};

@@ -12,7 +12,7 @@ However, the following additional terms apply:
 - You **may not sell** PowerGrip as a standalone product or claim it as your own.  
 - **You may, however, include PowerGrip in paid services** (e.g., pre-installed on a cloud server, as long as it is not modified in a way that violates these terms).  
 
-✅ **Allowed Use:**  
+✅ **Examples of Allowed Use:**  
 - Cloud providers and hosting services **can** pre-install PowerGrip for their customers.  
 - Developers **can** modify PowerGrip and distribute their modifications, **but they must credit the original project and keep it open-source under AGPLv3**.  
 - Using PowerGrip for research, education, or personal projects is always allowed.  

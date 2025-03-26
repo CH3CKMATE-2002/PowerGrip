@@ -21,4 +21,14 @@ public static class Guard
 
         throw new InvalidOperationException(message ?? "The assertion has failed");
     }
+
+    public static void ThrowIfNotLinux(string? message = null)
+    {
+        if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+        {
+            throw new PlatformNotSupportedException(
+                message ?? "The call is only supported on Linux systems"
+            );
+        }
+    }
 }

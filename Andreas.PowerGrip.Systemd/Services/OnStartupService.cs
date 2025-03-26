@@ -3,15 +3,15 @@ namespace Andreas.PowerGrip.Systemd.Services;
 public class OnStartupService(
     ILogger<OnStartupService> logger,
     IHostApplicationLifetime lifetime,
-    UdsSocketOptions udsOptions) : IHostedService
+    UdsOptions udsOptions) : IHostedService
 {
     private readonly ILogger<OnStartupService> _logger = logger;
     private readonly IHostApplicationLifetime _lifetime = lifetime;
-    private readonly UdsSocketOptions _udsSocketOptions = udsOptions;
+    private readonly UdsOptions _udsOptions = udsOptions;
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
-        var socketPath = _udsSocketOptions.Path;
+        var socketPath = _udsOptions.SocketFile;
 
         _lifetime.ApplicationStarted.Register(() =>
         {
@@ -20,10 +20,14 @@ public class OnStartupService(
                 // Set permissions (e.g., 660 for group access)
                 UnixFileMode perms = UnixFileMode.UserRead | UnixFileMode.UserWrite
                                     | UnixFileMode.GroupRead | UnixFileMode.GroupWrite;
-                bool permsFixed = UnixUtils.ModifyPermissions(socketPath, perms);
+                bool permsFixed = PosixUtils.ModifyPermissions(socketPath, perms);
 
                 // Change group ownership (if server has permissions)
-                bool ownFixed = UnixUtils.ChangeOwnership(socketPath, "root", "powergrip");
+                bool ownFixed = PosixUtils.ChangeOwnership(
+                    socketPath,
+                    UnixUser.GetUser("root").UserId,
+                    UnixGroup.GetGroup("powergrip").GroupId
+                );
 
                 _logger.LogInformation("Socket permissions set: {PermsFixed}", permsFixed);
                 _logger.LogInformation("Socket ownership set: {OwnFixed}", ownFixed);
@@ -39,7 +43,7 @@ public class OnStartupService(
 
     public Task StopAsync(CancellationToken cancellationToken)
     {
-        var socketPath = _udsSocketOptions.Path;
+        var socketPath = _udsOptions.SocketFile;
 
         if (File.Exists(socketPath))
         {

@@ -1,9 +1,6 @@
 namespace Andreas.PowerGrip.Server.Controllers;
 
 // TODO: Implement this!
-// 1. Create models: CurrentHandshakes, StoredKeys.
-// 2. Create types: HandshakeRequest, HandshakeReply
-// 3. Implement methods: Start, Confirm
 // 4. Think of a way to move the anonymous user into
 //    an authenticated user.
 //    (Moving the key from anon to known user)
@@ -23,18 +20,18 @@ public class HandshakeController(
     private readonly IHandshakeService _handshake = handshake;
 
     [HttpGet, Route("start")]
-    public async Task<ActionResult<ServiceResponse>> StartHandshake()
+    public async Task<ActionResult<ServiceResponse<HandshakeReply>>> StartHandshake()
     {
         var connection = HttpContext.Connection;
-        var reply = _handshake.Start(connection);
-        await Task.CompletedTask;
-        throw new NotImplementedException();
+        var response = await _handshake.StartAsync(connection);
+
+        return response.Success ? Ok(response) : BadRequest(response);
     }
 
-    [HttpGet, Route("confirm")]
-    public async Task<ActionResult<ServiceResponse>> ConfirmHandshake()
+    [HttpPost, Route("confirm")]
+    public async Task<ActionResult<ServiceResponse>> ConfirmHandshake([FromBody] HandshakeConfirmation confirmation)
     {
-        await Task.CompletedTask;
-        throw new NotImplementedException();
+        var response = await _handshake.ConfirmAsync(confirmation);
+        return response.Success ? Ok(response) : BadRequest(response);
     }
 }

@@ -6,9 +6,9 @@
   - [X] Use UDS.
   - [X] Secure endpoints (JWT).
   - [X] Use systemd service model and test it.
-  - [ ] Remove the dependency on the old `SystemService`.
+  - [X] Remove the dependency on the old `SystemService`.
+  - [ ] Think of a good implementation to `ISystemService`.
   - [X] Make `SystemInfo` class.
-- [ ] Design the basic frontend functionality.
 - [ ] Complete API design.
   - [X] Make a UserManager.
     - [X] Create `CheckPassword`
@@ -17,10 +17,15 @@
     - [X] Validation `:')`
   - [X] Implement the RSA Handshake.
   - [ ] Implement `SignUpRequest` (user creation from non-admins)
+  - [ ] Fix your messed up request classes!
   - [ ] Implement optional IP Banning.
   - [X] Remove `HashSet<string>` from `AppUser`.
   - [ ] Reduce code duplication by using: `Task::GetAwaiter::GetResult` (How did I completely forget about this!? 🤦🏻)
   - [ ] Implement SMTP mailing and notifications.
+  - [ ] Fix role addition/removal.
+  - [ ] Fix `ErrorKind` enum for redundancy.
+  - [ ] Improve `LinuxSysInfoService` and `ISysInfoService`
+  - [ ] Use the Linux `Guard`.
 - [ ] Complete Frontend design.
   - [ ] Finish the login screen.
   - [ ] Make the main menu.

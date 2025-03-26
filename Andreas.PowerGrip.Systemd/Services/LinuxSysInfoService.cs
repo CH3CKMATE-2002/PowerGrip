@@ -5,7 +5,9 @@ public class LinuxSysInfoService : ISysInfoService
     public const string SystemCpuInfoPath = "/sys/cpuinfo";
     public const string SystemMemInfoPath = "/sys/meminfo";
 
-    private readonly DistributionInfo distribution = new DistributionInfo();
+    private readonly DistributionInfo distribution = DistributionInfo.GetInfo();
+    private readonly KernelInfo kernel = KernelInfo.GetInfo();
+    private readonly PowerSupplyInfo powerSupply = PowerSupplyInfo.GetInfo();
 
     public string GetCodename()
     {
@@ -23,12 +25,12 @@ public class LinuxSysInfoService : ISysInfoService
     public string GetHostname()
     {
         // return Environment.GetEnvironmentVariable("HOST") ?? "unknown";
-        return UnixUtils.GetHostname();
+        return kernel.HostName;
     }
 
     public KernelInfo GetKernelInfo()
     {
-        return UnixUtils.GetKernelInfo();
+        return kernel;
     }
 
     public string GetOsName()
@@ -43,7 +45,8 @@ public class LinuxSysInfoService : ISysInfoService
 
     public TimeSpan GetUptime()
     {
-        return UnixUtils.GetUptime();
+        var stats = SystemStats.QueryCurrentStats();
+        return stats.Uptime;
     }
 
     public MemoryInfo GetMemoryInfo()
@@ -53,6 +56,7 @@ public class LinuxSysInfoService : ISysInfoService
 
     public PowerSupplyInfo GetPowerSupplyInfo()
     {
-        return new PowerSupplyInfo();
+        powerSupply.Update();
+        return powerSupply;
     }
 }

@@ -69,7 +69,7 @@ public static class ServiceCollectionExtensions
     {
         // services.AddScoped<IThingy, Thingy>();
         services.AddSingleton<IJwtProvider, JwtProvider>();
-        services.AddSingleton<ISystemService, SystemService>();  // TODO: This implementation of ISystemService is obsolete!
+        // services.AddSingleton<ISystemService, SystemService>();  // TODO: This implementation of ISystemService is obsolete!
         services.AddSingleton<UdsHttpClient>();
         services.AddScoped<IHandshakeService, HandshakeService>();
         services.AddScoped<IAppUserManager, AppUserManager>();  // Scoped, as it uses a scoped service "AppDbContext"

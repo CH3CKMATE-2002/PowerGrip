@@ -11,9 +11,9 @@ public class SystemController(ILogger<SystemController> logger, IAppUserManager 
     private readonly UdsHttpClient _client = client;
 
     [HttpGet, Route("update")]
-    public async Task<ActionResult<ServiceResponse<ProcessData>>> SendSystemUpdateRequest()
+    public async Task<ActionResult<ServiceResponse<LaunchedProcessData>>> SendSystemUpdateRequest()
     {
-        var result = await _client.GetAsync<ServiceResponse<ProcessData>>(SystemdEndpoints.AptUpdate);
+        var result = await _client.GetAsync<ServiceResponse<LaunchedProcessData>>(SystemdEndpoints.AptUpdate);
         return result is not null && result.Success ? Ok(result) : BadRequest(result);
     }
 }

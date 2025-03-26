@@ -21,7 +21,7 @@ public class SystemService: ISystemService
         }
     }
 
-    private ProcessData RunHelper(string username, string password, string command = "", params string[] args)
+    private LaunchedProcessData RunHelper(string username, string password, string command = "", params string[] args)
     {
         _logger.LogDebug("{method} was called", nameof(RunHelper));
 
@@ -67,7 +67,7 @@ public class SystemService: ISystemService
         stp.Stop();
 
         _logger.LogDebug("Helper process exited with code: {code}", process.ExitCode);
-        return new ProcessData
+        return new LaunchedProcessData
         {
             ExitCode = process.ExitCode,
             StdError = process.StandardError.ReadToEnd(),
@@ -107,7 +107,7 @@ public class SystemService: ISystemService
         return data.ExitCode == 0;
     }
 
-    public ProcessData UpdateSystem(PgLoginRequest request)
+    public LaunchedProcessData UpdateSystem(PgLoginRequest request)
     {
         //? Can we login on 'sudo' using another way?
         Guard.Assert(request.LoginMethod != LoginMethod.PasswordLogin,
@@ -115,7 +115,7 @@ public class SystemService: ISystemService
         
         if (string.IsNullOrEmpty(request.Username) || request.Password is null)
         {
-            return ProcessData.FailedToLaunch(HelperPath);
+            return LaunchedProcessData.FailedToLaunch(HelperPath);
         }
 
         var data = RunHelper(
@@ -131,7 +131,7 @@ public class SystemService: ISystemService
         return data;
     }
 
-    public ProcessData UpgradeSystem(PgLoginRequest request)
+    public LaunchedProcessData UpgradeSystem(PgLoginRequest request)
     {
         //? Can we login on 'sudo' using another way?
         Guard.Assert(request.LoginMethod != LoginMethod.PasswordLogin,
@@ -139,7 +139,7 @@ public class SystemService: ISystemService
         
         if (string.IsNullOrEmpty(request.Username) || request.Password is null)
         {
-            return ProcessData.FailedToLaunch(HelperPath);
+            return LaunchedProcessData.FailedToLaunch(HelperPath);
         }
 
         var data = RunHelper(

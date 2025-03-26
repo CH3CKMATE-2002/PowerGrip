@@ -1,5 +1,6 @@
-import { Card, Col, Row, Accordion, Alert } from "react-bootstrap";
-import { IoCheckmarkCircleOutline, IoCloseCircleOutline, IoWarningOutline } from "react-icons/io5";
+import { Card, Col, Row, Accordion } from "react-bootstrap";
+// import { Alert } from "react-bootstrap";
+// import { IoCheckmarkCircleOutline, IoCloseCircleOutline, IoWarningOutline } from "react-icons/io5";
 // import { BsUbuntu } from "react-icons/bs"; // Small, suitable for as in-text icon only.
 import { AccountLoginForm } from "~/components/AppForms";
 import { ComingSoon } from "~/components/Banners";
@@ -8,7 +9,6 @@ import { useEffect } from "react";
 
 import Wallpaper from "~/assets/Wallpapers/beach-waves-night-dimmed.jpg";
 import './LoginPage.scss';
-
 
 
 const body = document.querySelector('body')!;
@@ -64,7 +64,7 @@ const LoginPage = () => {
                 </Col>
                 <Col>
                     <BannerDisplay />
-                    <Alert variant="danger" className="mt-3">
+                    {/* <Alert variant="danger" className="mt-3">
                         <Alert.Heading><IoCloseCircleOutline /> Yikes!</Alert.Heading>
                         That would sound really bad if it wasn't a placeholder...
                     </Alert>
@@ -75,7 +75,7 @@ const LoginPage = () => {
                     <Alert variant="success">
                         <Alert.Heading><IoCheckmarkCircleOutline /> Yippee!</Alert.Heading>
                         That would sound really joyful if it wasn't a placeholder...
-                    </Alert>
+                    </Alert> */}
                 </Col>
             </Row>
         </>

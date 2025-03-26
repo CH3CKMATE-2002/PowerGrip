@@ -2,11 +2,11 @@ import { Card, Col, Container, Row } from 'react-bootstrap';
 import { randomElement } from '~/utilities/Miscellaneous';
 import './AboutPage.scss';
 
-const ADJECTIVES = [
+const COMPLEMENTS = [
     'good',
     'all-mighty',
     'strong',
-    'like having a good time',
+    'the good time',
     'monstrous',
     'satisfied',
     'happy',
@@ -17,7 +17,7 @@ const ADJECTIVES = [
 ];
 
 const AboutPage = () => {
-    const CHOSEN_ADJ = randomElement(ADJECTIVES);
+    const CHOSEN_COMP = randomElement(COMPLEMENTS);
 
     return (
         <>
@@ -28,7 +28,7 @@ const AboutPage = () => {
                 </h1>
                 <p>
                     A linux server dashboard with small, yet powerful AI tools
-                    that will make you feel <span className='text-decoration-underline'>{CHOSEN_ADJ}</span>!
+                    that will make you feel <span className='text-decoration-underline'>{CHOSEN_COMP}</span>!
                 </p>
             </Container>
             <hr />
@@ -41,7 +41,7 @@ const AboutPage = () => {
                             </Card.Header>
                             <Card.Body>
                                 <Card.Text>
-                                    As you getting familiar with PowerGrip, you'll notice
+                                    As you get more familiar with PowerGrip, you'll notice
                                     the power under your control. PowerGrip comes with powerful
                                     tools, ranging from simple ones to the AI powered. Seems like
                                     managing your server will be a joyful ride!
@@ -56,9 +56,10 @@ const AboutPage = () => {
                             </Card.Header>
                             <Card.Body>
                                 <Card.Text>
-                                    With the help of .NET 8 and React, you'll have
+                                    With the help of .NET and React, you'll have
                                     control over your server with a responsive dashboard
-                                    and quite fast backend server suitable for all needs.
+                                    and quite fast backend server suitable for all of your
+                                    administration needs!
                                 </Card.Text>
                             </Card.Body>
                         </Card>
@@ -70,9 +71,10 @@ const AboutPage = () => {
                             </Card.Header>
                             <Card.Body>
                                 <Card.Text>
-                                    PowerGrip started as a personal project of <b>Andreas P. Hanna</b>,
+                                    PowerGrip started as a personal graduation project of <b>CH3CKMATE-2002</b>,
                                     who later, wanted to share it to all the world as a free, open-source,
-                                    application to all the world for personal use.
+                                    application to all the world. Nothing compares the joy of seeing your child grow
+                                    up, and the happiness of seeing your software becoming popular.
                                 </Card.Text>
                             </Card.Body>
                         </Card>
@@ -123,7 +125,7 @@ const AboutPage = () => {
                                     mature, modern-looking UI.
                                     PowerGrip sports both light and dark themes, suitable for
                                     every light hero or dark dweller.
-                                    Who said that a linux dashboard has to be an eye-sore?
+                                    Who said that a linux dashboard has to be an eye-gore?
                                 </Card.Text>
                             </Card.Body>
                         </Card>

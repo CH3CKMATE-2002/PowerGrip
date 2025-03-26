@@ -6,7 +6,7 @@ public interface ISystemService
 
     bool Authenticate(PgLoginRequest request);
 
-    ProcessData UpdateSystem(PgLoginRequest request);
+    LaunchedProcessData UpdateSystem(PgLoginRequest request);
 
-    ProcessData UpgradeSystem(PgLoginRequest request);
+    LaunchedProcessData UpgradeSystem(PgLoginRequest request);
 }

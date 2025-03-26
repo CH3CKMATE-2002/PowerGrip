@@ -9,6 +9,14 @@ public class UsersController(
 
     private readonly IAppUserManager _userManager = userManager;
 
+    [HttpPost, Route("signup")]
+    public async Task<ActionResult<ServiceResponse>> SignUp()
+    {
+        // TODO: Implement this
+        await Task.CompletedTask;
+        throw new NotImplementedException();
+    }
+
     [HttpPost, Route("login")]
     public async Task<ActionResult<AuthResponse>> Login([FromBody] PgLoginRequest request)
     {

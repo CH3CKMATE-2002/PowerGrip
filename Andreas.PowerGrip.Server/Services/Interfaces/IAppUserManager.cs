@@ -59,4 +59,12 @@ public interface IAppUserManager
     ServiceResponse DeleteUser(DeleteUserRequest request);
 
     Task<ServiceResponse> DeleteUserAsync(DeleteUserRequest request);
+
+    ServiceResponse AddToRole(AppUser user, string role);
+
+    Task<ServiceResponse> AddToRoleAsync(AppUser user, string role);
+
+    ServiceResponse RemoveFromRole(AppUser user, string role);
+
+    Task<ServiceResponse> RemoveFromRoleAsync(AppUser user, string role);
 }

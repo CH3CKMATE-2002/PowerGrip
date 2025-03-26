@@ -4,7 +4,7 @@ namespace Andreas.PowerGrip.Systemd.Controllers;
 public class SystemController: ControllerBase
 {
     [HttpGet, Route("apt-update")]
-    public async Task<ActionResult<ServiceResponse<ProcessData>>> AptUpdate()
+    public async Task<ActionResult<ServiceResponse<LaunchedProcessData>>> AptUpdate()
     {
         var psi = new ProcessStartInfo
         {
@@ -23,11 +23,11 @@ public class SystemController: ControllerBase
         if (process is null)
         {
             stopwatch.Stop();
-            return BadRequest(new ServiceResponse<ProcessData>
+            return BadRequest(new ServiceResponse<LaunchedProcessData>
             {
                 Success = false,
                 Title = "Failure at Launching Process",
-                Data = ProcessData.FailedToLaunch(),
+                Data = LaunchedProcessData.FailedToLaunch(),
                 Errors =
                 [
                     ServiceError.InternalServerError("The 'apt' process could not be launched")
@@ -38,11 +38,11 @@ public class SystemController: ControllerBase
         await process.WaitForExitAsync();
         stopwatch.Stop();
 
-        return new ServiceResponse<ProcessData>
+        return new ServiceResponse<LaunchedProcessData>
         {
             Success = true,
             Title = "Process Completed",
-            Data = new ProcessData
+            Data = new LaunchedProcessData
             {
                 Tag = "apt update",
                 LaunchSuccess = true,
